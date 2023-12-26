@@ -8,13 +8,15 @@ import SubCard from 'ui-component/cards/SubCard';
 import MainCard from 'ui-component/cards/MainCard';
 import SecondaryAction from 'ui-component/cards/CardSecondaryAction';
 import { gridSpacing } from 'store/constant';
+import { useSelector } from 'react-redux';
 
 // ==============================|| TYPOGRAPHY ||============================== //
 
 const Typography = () => {
   // State for categories
   const [movies, setMovies] = useState([]);
-
+  const accessToken = useSelector((state) => state.user.accessToken);
+  console.log("accessToken ",accessToken)
   // Effect to fetch categories
   useEffect(() => {
     const getMovies = async () => {
@@ -24,7 +26,7 @@ const Typography = () => {
           maxBodyLength: Infinity,
           url: 'http://localhost:3001/movie/',
           headers: {
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTg1ZDc1ZWJiZDc3OTcxZDc2NzBiMmEiLCJpYXQiOjE3MDMzMjgwODEsImV4cCI6MTcwMzMzMzQ4MX0.OZNFF6tEyhPhLrbf2huXfHIgGZ_GS6Ys86Y4iEMhprs'
+            'Authorization': `Bearer ${accessToken}`
           }
         };
 

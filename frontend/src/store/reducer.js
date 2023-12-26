@@ -7,7 +7,6 @@ import { SET_USER, RESET_USER } from './constant';
 const initialState = {
   _id: '',
   email: '',
-  username: '',
   accesstoken: '',
   auth: false
 };
