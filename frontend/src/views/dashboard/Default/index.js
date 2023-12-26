@@ -11,12 +11,20 @@ import TotalIncomeDarkCard from './TotalIncomeDarkCard';
 import TotalIncomeLightCard from './TotalIncomeLightCard';
 import TotalGrowthBarChart from './TotalGrowthBarChart';
 import { gridSpacing } from 'store/constant';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 
 // ==============================|| DEFAULT DASHBOARD ||============================== //
 
 const Dashboard = () => {
+  const navigate = useNavigate()
   const [isLoading, setLoading] = useState(true);
+  const accessToken = useSelector((state) => state.user.accessToken);
   useEffect(() => {
+    console.log("first component",accessToken)
+    if(!accessToken){
+      navigate("/login")
+    }
     setLoading(false);
   }, []);
 
